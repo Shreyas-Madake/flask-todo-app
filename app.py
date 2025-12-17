@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template,request,redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -61,4 +62,7 @@ def delete(sno):
     return redirect("/")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    
+    port = int(os.environ.get("PORT", 5000))
+    
+    app.run(host='0.0.0.0', port=port)
